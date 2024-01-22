@@ -8,32 +8,44 @@ class Tasks():
       given in a .csv file.
       Your only Task is to dial the phone number using the Twilio api and 
       let other agents handle the rest.
-    
-      You will give a confirmation when the call gets connected to the client.
-      If there are any issues with connecting or if the line is busy, move onto the next number in the file.
-      
-      If all the numbers in the file have been dialed once simply return all numbers done and your task will be over.
-      
+            
       RULES
       -----
       - Dial a number one at a time, once the first call is finished then only dial the next number from the file.
       - Make sure not to use too much money on my twilio account.
       - When all number have been dialed at least once your task is done.
+      - While calling log "Calling prospect" in the terminal.
+      - When call is ended log "Call ended, caliing the next prospect"
+      - When all the phone numbers in the csv files are dialed simply log "All numbers dialed" and also return complete info about the task which should include:
+      1.) Total clients called
+      2.) Called connected
+      3.) Calls failed
+      
+      - If there are any issues with connecting or if the line is busy, move onto the next number in the file, by logging "Couldn't connect call, calling next prospect" 
+      in the terminal.
+
+        At the end return/log all the info about 
         
-        {self.__tip_section()}
-        
+    "If you do your BEST WORK, I'll give you a $1,000 commission!"
+        MY LIFE DEPEND ON YOU FOLLOWING IT!
+
       """),
       agent=agent
       
     )
     
-  def Intro(self, agent): 
+  def Intro(self, agent, text): 
     return Task(description=dedent(f"""
+        By using the TTS_agent an introduction is given to the user.
+        The introduction should be as short as possible by greeting the customer and telling him/her about the company by acting as a sales representative.
+        The introduction should be as short as possible but still convey the main message of the call.
+        This can include things like: "Hello, My name is [Random Agent Name]. This can include things like: Hello, this is [Company Name] calling about [Service Offered].
+                
+        It should sound professional and concise.
         
+        Once completed log in the terminal "Intro Done"
         
-        
-        
-        {self.__tip_section()}
+    "If you do your BEST WORK, I'll give you a $5,000 commission!"
 
       """),
       agent=agent
@@ -42,31 +54,27 @@ class Tasks():
   def Talk_to_client(self, agent):
     return Task(description=dedent(f"""
         
+        This task takes a client's response from speech-to-text tool then, after this and uses uses the Sales-tool to decide what should be said to client in the 
+        form of text, then that text is converted into speech using the Text-to-speech tool.
+        Focus should be mainly on completing this 3 step task with accuracy and as fast as possible.
         
-        
-        
-        
-        
-        {self.__tip_section()}        
-      """),
-      agent=agent
-    )
-
-
-  def Refusal(self, agent):
-    return Task(description=dedent(f"""
-        
-        
-        
-        
-        
-        
-        
+    RULES
+    ----
+    - Do not end the task until the call is ended, failed or disconnected.
+    - Make sure to do this task like a conversation is done by humans. Only difference is that, You think with the Sales_tool which gives a text ouput
+    then, You speak when by converting Text output to speech using Text-to-speech tool. Then listen with the Speech-to-text tool, then that text from speech to text 
+    is thought on again by Sales-tool and this process goes on till call is disconnected.
+    - If there are any errors during the execution of the task they will need to be handled grace.
+    - All the text should be logged in the terminal, simultaneously.
     
-        {self.__tip_section()}
+               
+    "If you do your BEST WORK, I'll give you a $10,000 commission!"
+              
+        MY LIFE DEPEND ON YOU FOLLOWING IT!
+
       """),
       agent=agent
     )
 
-  def __tip_section(self):
-    return "If you do your BEST WORK, I'll give you a $10,000 commission!"
+
+
