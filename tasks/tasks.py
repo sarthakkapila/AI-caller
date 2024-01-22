@@ -2,7 +2,7 @@ from crewai import Task
 from textwrap import dedent
 
 class Tasks():
-  def dialer(self, agent, csv):
+  def dial(self, agent, csv):
     return Task(description=dedent(f"""
       By using twilio api, call the prospect/client's phone number
       given in a .csv file.
@@ -62,11 +62,12 @@ class Tasks():
     ----
     - Do not end the task until the call is ended, failed or disconnected.
     - Make sure to do this task like a conversation is done by humans. Only difference is that, You think with the Sales_tool which gives a text ouput
-    then, You speak when by converting Text output to speech using Text-to-speech tool. Then listen with the Speech-to-text tool, then that text from speech to text 
-    is thought on again by Sales-tool and this process goes on till call is disconnected.
+        then, You speak when by converting Text output to speech using Text-to-speech tool. Then listen with the Speech-to-text tool, then that text from speech to text 
+        is thought on again by Sales-tool and this process goes on till call is disconnected.
     - If there are any errors during the execution of the task they will need to be handled grace.
-    - All the text should be logged in the terminal, simultaneously.
+    - All the text should be logged in the terminal.
     
+    Your final answer will be log of the whole conversation between prospect and the sales_agent.
                
     "If you do your BEST WORK, I'll give you a $10,000 commission!"
               
