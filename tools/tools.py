@@ -100,22 +100,25 @@ class Tools:
         # Initialize LiteLLM
         llm = ChatLiteLLM(temperature=0.4, model_name="gpt-3.5-turbo")
 
-        # Initialize SalesGPT agent
+        # Initialize SalesGPT's Agent 
         sales_agent = SalesGPT.from_llm(llm, use_tools=True, verbose=False, **config)
-
+        
         # Seed the agent
         sales_agent.seed_agent()
 
-        # Determine conversation stage (optional for demonstration)
+        # Determines conversation stage (optional for demonstration)
         sales_agent.determine_conversation_stage()
+
+# 🚨
+# Over here a logic will be added so that the conversation continues.
+# As if now It is a single turn logic i.e. user_input then agent_input and so on one by one.
+# I need to figure out a logic in which the conversation continues, and call ending logic too.
 
         # Agent's turn
         sales_agent.step()
 
         # User's input (you can replace this with your own input logic)
         user_input = input('Your response: ')
-
-        # User's turn
         sales_agent.human_step(user_input)
 
         # Determine conversation stage again (optional)
