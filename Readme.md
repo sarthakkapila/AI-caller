@@ -1,13 +1,9 @@
-# Plan (till now)
+# GFAAD prototype of GFAAD AI-Caller 🤫🧏🏻‍♂️
 
-Making an ai caller 
+## Tech used 🤓
 
-### App will contains 3 parts
-1.) Speech to text something like OpenAI whisper (probably) which listens to what the user says and then converts it to text.
-2.) Then the text is put into a ML model (salesGPT) to get an answer.
-3.) The answer/output is then put into a TTS syntesizer and is heard by the user as output.
-
-I am planning to do all this by using crewAI agents or hitting endpoint of API of eleven labs and assembly and using a local model on my system
-
-The crewAI - 
-Will make agents and hit api and run stuff (ig). 
+- SalesGPT - Brain of the entire app. Not planning to train my own (for sales atleast), might train new models for other needs.
+- CrewAI - Used to make agents and them work together. Will change to a better one in future (best and the easiest in the market right now).
+- Text-To-Speech (TTS) - Used tortoise huggingface prototype api for now. Elven labs is also a good option but too expensive (best in the market tho). Or even a local LLM.
+- Speech-To-Text (STT) - Thinking of using assembly as its pretty cheap ($0.47) per hour. No point in using local LLM/any other api.
+- Twilio - Used to make calls.
