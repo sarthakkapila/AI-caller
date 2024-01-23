@@ -40,11 +40,11 @@ class Tools:
                 split_by_newline,
                 api_name="/predict"
             )
-            return result
+            print(result)
 
 # Example of using the TTS method
-text_to_convert = "Howdy!"
-file_path_or_url = "."
+text_to_convert = "Hey this is Emily from XYZ productions, Is this mr. Kevin talking?!"
+file_path_or_url = "example.txt"
 voice_option = "angie,angie"
 second_voice_option = "angie,angie"
 split_by_newline_option = "Yes"
