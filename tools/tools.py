@@ -57,7 +57,68 @@ class Tools:
     def SST():
         """Converts speech to text"""
         
+        
+        
+        
+        
+        
 #   @tool("Context-aware AI Agent for Sales")
     @staticmethod
     def LLM():
-        """ """
+        """Context-aware AI Agent for Sales"""
+
+        # Initialize LiteLLM
+        llm = ChatLiteLLM(temperature=0.4, model_name="gpt-3.5-turbo")
+
+        # Initialize SalesGPT agent
+        sales_agent = SalesGPT.from_llm(llm, use_tools=True, verbose=False,
+                                       product_catalog="examples/sample_product_catalog.txt",
+                                       salesperson_name="Ted Lasso",
+                                       salesperson_role="Sales Representative",
+                                       company_name="Sleep Haven",
+                                       company_business='''Sleep Haven 
+                                       is a premium mattress company that provides
+                                       customers with the most comfortable and
+                                       supportive sleeping experience possible. 
+                                       We offer a range of high-quality mattresses,
+                                       pillows, and bedding accessories 
+                                       that are designed to meet the unique 
+                                       needs of our customers.'''
+                                       )
+
+        # Seed the agent
+        sales_agent.seed_agent()
+
+        # Determine conversation stage (optional for demonstration)
+        sales_agent.determine_conversation_stage()
+
+        # Agent's turn
+        sales_agent.step()
+
+        # User's input (you can replace this with your own input logic)
+        user_input = input('Your response: ')
+
+        # User's turn
+        sales_agent.human_step(user_input)
+
+        # Determine conversation stage again (optional)
+        sales_agent.determine_conversation_stage()
+
+        # Agent's next turn
+        sales_agent.step()
+
+        # You can continue the conversation as needed
+
+        # Example: Accessing generated responses
+        generated_response = sales_agent.get_last_response()
+        print("Generated Response:", generated_response)
+
+        # Example: Accessing conversation history
+        conversation_history = sales_agent.get_conversation_history()
+        print("Conversation History:", conversation_history)
+
+        # Example: Accessing other agent information
+        agent_info = sales_agent.get_agent_info()
+        print("Agent Information:", agent_info)
+
+        # You can return or use any relevant information from the agent as needed
