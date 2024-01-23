@@ -57,7 +57,7 @@ class Tools:
     def SST():
         """Converts speech to text"""
         
-#   @tool("")
+#   @tool("Context-aware AI Agent for Sales")
     @staticmethod
     def LLM():
         """ """
