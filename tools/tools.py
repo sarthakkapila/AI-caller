@@ -48,6 +48,3 @@ file_path_or_url = "example.txt"
 voice_option = "angie,angie"
 second_voice_option = "angie,angie"
 split_by_newline_option = "Yes"
-
-result = Tools.TTS(text_to_convert, file_path_or_url, voice_option, second_voice_option, split_by_newline_option)
-print(result)
