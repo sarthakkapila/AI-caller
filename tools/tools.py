@@ -3,6 +3,12 @@ from twilio.rest import Client
 # from langchain.tools import tool
 # from langchain_community.llms import HuggingFaceHub
 from gradio_client import Client
+from langchain.chat_models import ChatLiteLLM
+from dotenv import load_dotenv
+
+
+from dotenv import load_dotenv
+load_dotenv() # make sure you have .env file with your API keys, eg., OPENAI_API_KEY=sk-xxx
 
 
 class Tools:
@@ -72,7 +78,7 @@ class Tools:
 
         # Initialize SalesGPT agent
         sales_agent = SalesGPT.from_llm(llm, use_tools=True, verbose=False,
-                                       product_catalog="examples/sample_product_catalog.txt",
+                                       product_catalog="sample_product_catalog.txt",
                                        salesperson_name="Ted Lasso",
                                        salesperson_role="Sales Representative",
                                        company_name="Sleep Haven",
