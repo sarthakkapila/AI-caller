@@ -26,6 +26,7 @@ class Tools:
         )
         return call.sid
 
+# Use microsoft/speecht5_tts if this api doesn't work 
 
 #   @tool("Text to Speech tool")
     @staticmethod
@@ -39,6 +40,8 @@ class Tools:
                 second_voice,
                 split_by_newline,
                 api_name="/predict"   
+                
+#                                   TESTING   
 # # Example of using the TTS method
 # text_to_convert = "Hey this is Emily from XYZ productions, Is this mr. Kevin talking?!"
 # file_path_or_url = "example.txt"
@@ -49,3 +52,12 @@ class Tools:
             # print(result)
 
 
+#   @tool("Speech to text")
+    @staticmethod
+    def SST():
+        """Converts speech to text"""
+        
+#   @tool("")
+    @staticmethod
+    def LLM():
+        """ """
