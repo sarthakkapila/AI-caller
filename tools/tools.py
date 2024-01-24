@@ -114,33 +114,45 @@ class Tools:
 # As if now It is a single turn logic i.e. user_input then agent_input and so on one by one.
 # I need to figure out a logic in which the conversation continues, and call ending logic too.
 
-        # Agent's turn
+        # Agent's output
         sales_agent.step()
 
-        # User's input (you can replace this with your own input logic)
+        # User's input 
+        # Add a new logic to this.
         user_input = input('Your response: ')
+        # User's output
         sales_agent.human_step(user_input)
 
         # Determine conversation stage again (optional)
         sales_agent.determine_conversation_stage()
 
-        # Agent's next turn
+        # Agent's output
         sales_agent.step()
 
         # You can continue the conversation as needed
+        
+#       🚨
+#       The logic will be written according to the conversation stages.
+#       conversation_stages = {
+#       '1' : "Introduction 
+#       '2': "Qualification
+#       '3': "Value proposition
+#       '4': "Needs analysis
+#       '5': "Solution presentation
+#       '6': "Objection handling
+#       '7': "Close
+#        }
 
-        # Example: Accessing generated responses
+        # Accessing generated responses
         generated_response = sales_agent.get_last_response()
         print("Generated Response:", generated_response)
 
-        # Example: Accessing conversation history
+        # Accessing conversation history
         conversation_history = sales_agent.get_conversation_history()
         print("Conversation History:", conversation_history)
 
-        # Example: Accessing other agent information
+        # Accessing other agent information
         agent_info = sales_agent.get_agent_info()
         print("Agent Information:", agent_info)
 
         # You can return or use any relevant information from the agent as needed
-        
-    
