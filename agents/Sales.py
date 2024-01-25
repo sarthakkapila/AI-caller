@@ -1,4 +1,5 @@
 from crewai import Agent
+from tools.LLM_tool import LLM
 
 class Sales_agent():
   
@@ -11,4 +12,7 @@ class Sales_agent():
       memory= True,
       verbose= True,
       allow_delegation=False,
+      tools = [
+        LLM.LLM,
+      ]
         )

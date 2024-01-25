@@ -1,4 +1,5 @@
 from crewai import Agent
+from tools.call_tool import CallNumber
 
 class caller():
     def Caller_agent(self, name):
@@ -10,6 +11,9 @@ class caller():
         memory= True,
         verbose= True,
         allow_delegation= False,
+        tools = [
+          CallNumber.make_call,
+        ]    
       )
       
-      
+    

@@ -1,4 +1,5 @@
 from crewai import Agent
+from tools.TTS_tool import TTS
 
 class TTS():
     def TTS_agents(self, name):
@@ -11,4 +12,7 @@ class TTS():
         memory= True,
         verbose= True,
         allow_delegation= False,
+        tools = [
+          TTS.TTS,
+        ]
       )

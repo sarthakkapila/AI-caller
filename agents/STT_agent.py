@@ -1,4 +1,5 @@
 from crewai import Agent
+from tools.STT_tool import STT
 
 class STT():
     def STT_agents(self, name):
@@ -10,4 +11,7 @@ class STT():
         memory= True,
         verbose= True,
         allow_delegation= False,
+        tools = [
+          STT.speech_to_text,
+        ]
       )
