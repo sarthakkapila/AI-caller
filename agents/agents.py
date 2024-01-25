@@ -2,7 +2,7 @@ from crewai import Agent
 
 class Agents():
   
-    def Sales_rep(self, name):
+    def sales_agent(self, name):
         return Agent(
       role='Sales representative',
       goal="""Conduct a sales conversation with the prospect""",

@@ -1,5 +1,9 @@
 import os
+from twilio.rest import Client
+# from langchain.tools import tool
+# from langchain_community.llms import HuggingFaceHub
 from gradio_client import Client
+# from langchain.chat_models import ChatLiteLLM
 from dotenv import load_dotenv
 import pyaudio
 import speech_recognition as sr
@@ -58,8 +62,7 @@ class Tools:
 
 # 🚨🚨🚨
 # Needs a whole fix
-# Need to figure out how can whisper hear what the client is sayiing while on the call
-
+# Need to figure out how can whisper hear what the client is saying while on the call
 #   @tool("Speech to text")
     @staticmethod
     def STT():
