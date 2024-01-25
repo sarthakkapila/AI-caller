@@ -33,23 +33,6 @@ class Tasks():
       agent=agent
       
     )
-    
-  def Intro(self, agent, text): 
-    return Task(description=dedent(f"""
-        By using the TTS_agent an introduction is given to the user.
-        The introduction should be as short as possible by greeting the customer and telling him/her about the company by acting as a sales representative.
-        The introduction should be as short as possible but still convey the main message of the call.
-        This can include things like: "Hello, My name is [Random Agent Name]. This can include things like: Hello, this is [Company Name] calling about [Service Offered].
-                
-        It should sound professional and concise.
-        
-        Once completed log in the terminal "Intro Done"
-        
-    "If you do your BEST WORK, I'll give you a $5,000 commission!"
-
-      """),
-      agent=agent
-    )
 
   def Talk_to_client(self, agent):
     return Task(description=dedent(f"""
