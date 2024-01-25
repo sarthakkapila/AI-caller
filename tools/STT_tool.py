@@ -18,9 +18,8 @@ load_dotenv() # make sure you have .env file with your API keys, eg., OPENAI_API
 
 class STT:
 
-#   @tool("Speech to text")
     @staticmethod
-    def STT():
+    def speech_to_text():
         # Set up the microphone
         p = pyaudio.PyAudio()
         stream = p.open(format=pyaudio.paInt16, channels=1, rate=44100, input=True, frames_per_buffer=1024)
@@ -57,5 +56,6 @@ class STT:
         stream.stop_stream()
         stream.close()
         p.terminate()
-        
-        
+
+# Uncomment the following line if you want to run the STT module
+# STT.speech_to_text()

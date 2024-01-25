@@ -18,15 +18,15 @@ class TTS:
 #   @tool("Text to Speech tool")
     @staticmethod
     def TTS(text, file_path, voice, second_voice, split_by_newline):
-            """Converts text to speech"""
-            client = Client("https://manmay-tortoise-tts.hf.space/")
-            result = client.predict(
-                text,
-                file_path,
-                voice,
-                second_voice,
-                split_by_newline,
-                api_name="/predict"   
+        """Converts text to speech"""
+        client = Client("https://manmay-tortoise-tts.hf.space/")
+        result = client.predict(
+            text,
+            file_path,
+            voice,
+            second_voice,
+            split_by_newline,
+            api_name="/predict" 
                 
 #                                   TESTING   
 # # Example of using the TTS method

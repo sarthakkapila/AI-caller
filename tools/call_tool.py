@@ -8,20 +8,19 @@ from dotenv import load_dotenv
 import pyaudio
 import speech_recognition as sr
 
-from dotenv import load_dotenv
-load_dotenv() # make sure you have .env file with your API keys, eg., OPENAI_API_KEY=sk-xxx
+load_dotenv()  # Remove redundant dotenv load
 
-class call_number:
+class CallNumber:
     
-#   @tool("Dial a phone number")
+    # @tool("Dial a phone number")
     @staticmethod
-    def call_number():
-        """Calls phone number"""
+    def make_call():
+        """Calls a phone number"""
         account_sid = 'ACea6a7def2b53a8ad97298f9ba69fccf8'
         auth_token = '7d1f0b090ec6cd9460786898798ee6dc'
 
         to_number = '+916280438234'
-        from_number= '+16692023622'
+        from_number = '+16692023622'
     
         client = Client(account_sid, auth_token)
 
@@ -32,4 +31,6 @@ class call_number:
         )
         return call.sid
 
-
+# Example usage:
+# call_instance = CallNumber()
+# call_instance.make_call()
