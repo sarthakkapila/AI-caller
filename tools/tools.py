@@ -1,9 +1,5 @@
 import os
-from twilio.rest import Client
-# from langchain.tools import tool
-# from langchain_community.llms import HuggingFaceHub
 from gradio_client import Client
-# from langchain.chat_models import ChatLiteLLM
 from dotenv import load_dotenv
 import pyaudio
 import speech_recognition as sr
