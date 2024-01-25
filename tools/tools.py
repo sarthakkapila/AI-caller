@@ -5,7 +5,8 @@ from twilio.rest import Client
 from gradio_client import Client
 # from langchain.chat_models import ChatLiteLLM
 from dotenv import load_dotenv
-
+import pyaudio
+import speech_recognition as sr
 
 from dotenv import load_dotenv
 load_dotenv() # make sure you have .env file with your API keys, eg., OPENAI_API_KEY=sk-xxx
@@ -58,11 +59,15 @@ class Tools:
             # print(result)
 
 
+
+# 🚨🚨🚨
+# Needs a whole fix
+# Need to figure out how can whisper hear what the client is sayiing while on the call
+
 #   @tool("Speech to text")
     @staticmethod
     def STT():
-        """Converts speech to text"""
-                # Set up the microphone
+        # Set up the microphone
         p = pyaudio.PyAudio()
         stream = p.open(format=pyaudio.paInt16, channels=1, rate=44100, input=True, frames_per_buffer=1024)
 
@@ -78,27 +83,26 @@ class Tools:
 
                 print("Processing...")
 
-                # Use the speech-to-text API
-                client = Client("https://openai-whisper.hf.space/")
-                result = client.predict(
-                    audio_data,
-                    "transcribe",
-                    api_name="/predict"
-                )
+                # Use Google Web Speech API for real-time transcription
+                recognizer = sr.Recognizer()
+                audio_text = recognizer.recognize_google(audio_data)
 
-                print("You:", result)
+                print("You:", audio_text)
 
                 # Here, you can add your logic to process the result and generate a response
 
             except KeyboardInterrupt:
                 # Break the loop if the user interrupts with Ctrl+C
                 break
+            except sr.UnknownValueError:
+                print("Could not understand audio")
+            except sr.RequestError as e:
+                print(f"Error connecting to Google Web Speech API: {e}")
 
         # Close the microphone stream
         stream.stop_stream()
         stream.close()
         p.terminate()
-        
         
         
         
