@@ -8,7 +8,6 @@ from tasks.tasks import Task
 from agents.agent import agents
 
 from dotenv import load_dotenv
-load_dotenv()
 
 # 🚨🚨🚨
 # FIX THE FUNCTION ARGUMENTS OF ALL

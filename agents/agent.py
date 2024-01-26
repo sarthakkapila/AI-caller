@@ -5,19 +5,25 @@ from tools.LLM_tool import LLM
 from tools.STT_tool import STT
 from tools.TTS_tool import TTS
 
+# MISTAKE NEEDED TO BE FIXED ->
+# You are treating agent as a task, treat agent like a person and edit stuff in tasks
+
 class Agents():
     
     def Caller_agent(self, name):
       return Agent(
-        role= "Calls the client",
-        goal= "The objective of the agent is to call the prospect using twilio",
-        backstory= """You are a diligent & hardworking agent which dials the phone umber of the potential prospect. 
-        Your task is to dial the number of prospect. You are well versed with tools like twilio which makes an efficient agent""",
+        role= "Calls the client/prospect",
+        goal= "The objective of this agent is to call the prospect/client",
+        backstory= """
+        You are a diligent & hardworking agent which calls a potential prospect. 
+        Equipped with all the latest tools needed You dial the phone number of prospect/client.
+        """,
         memory= True,
         verbose= True,
         allow_delegation= True,
         tools = [
           CallNumber.make_call,
+          CallNumber.read_number,
         ]    
       )
       
@@ -25,20 +31,10 @@ class Agents():
         return Agent(
       role='Sales representative',
       goal="""Conduct a sales conversation with the prospect""",
-      backstory="""You are most seasoned & polite sales representative with lots of expertise in customer acquisition, persuasion, sales and help the cutomers meet their needs.
-                You sell the services offered by your company. You use a tool which is a Large language Model which tells you what to conversate with the client and what all to say.
-                The conversation that you will have with the client will have 7 stages.
-                
-                CONVERSATION STAGES
-                -------------------
-                '1' : "Introduction
-                '2': "Qualification
-                '3': "Value proposition
-                '4': "Needs analysis
-                '5': "Solution presentation
-                '6': "Objection handling
-                '7': "Close.
-                What all exactly needed to be said will be told by the LLM tool.""",
+      backstory="""
+        You are most seasoned & polite sales representative with lots of expertise in customer acquisition, persuasion, sales and help the customers meet their needs.
+        You sell the services offered by your company. 
+        You use a tool which is a Large language Model which tells you what to conversate with the client by generating answers in a conversation.""",
       memory= True,
       verbose= True,
       allow_delegation=False,

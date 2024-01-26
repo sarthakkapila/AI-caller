@@ -10,10 +10,3 @@
 Eleven labs - $0.18/1k & Openai - $0.030/ 1k (Will decide the models at end right now will only use hugging face prototyping apis.)
 - Speech-To-Text (STT) - Thinking of using assembly as its pretty cheap ($0.47) per hour. Or even openai whisper. Will use huggingface api for now.
 - Twilio - Used to make calls.
-
-
-
-
-🚨 - high level fix needed.
-🤖 - not working as expected.
-💩 - needs a better solution.   
