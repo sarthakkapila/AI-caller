@@ -8,6 +8,9 @@ from dotenv import load_dotenv
 import pyaudio
 import speech_recognition as sr
 
+import csv
+import pandas as pd
+
 load_dotenv()  # Remove redundant dotenv load
 
 class CallNumber:
@@ -34,3 +37,23 @@ class CallNumber:
 # Example usage:
 # call_instance = CallNumber()
 # call_instance.make_call()
+
+    # @tool("Reads a number from a csv file")
+    @staticmethod
+    def read_number():
+        """Reads names and numbers from a local CSV file"""
+        # Replace the following line with the path to your contacts.csv file
+        csv_file_path = "contacts.csv"
+
+        # Read the CSV file into a Pandas DataFrame
+        df = pd.read_csv(csv_file_path)
+
+        # Assuming the first column has names and the second column has numbers
+        name_column = "Name"
+        number_column = "Phone"
+
+        # Extract names and numbers
+        names = df[name_column].tolist()
+        numbers = df[number_column].tolist()
+
+        return names, numbers
