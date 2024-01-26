@@ -1,4 +1,6 @@
-# GFAAD prototype of GFAAD AI-Caller 🤫🧏🏻‍♂️
+# AI-Caller prototype 🤫🧏🏻‍♂️
+
+### Kya badiya prototype banaya hai jii !! 👽 
 
 ## Tech used 🤓
 
