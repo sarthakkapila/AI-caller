@@ -60,7 +60,7 @@ class Agents():
         verbose= True,
         allow_delegation= False,
         tools = [
-          TTS.TTS,
+          TTS.Tortoise_TTS,
         ]
       )
       

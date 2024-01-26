@@ -17,7 +17,7 @@ class TTS:
 
 #   @tool("Text to Speech tool")
     @staticmethod
-    def TTS(text, file_path, voice, second_voice, split_by_newline):
+    def Tortoise_TTS(text, file_path, voice, second_voice, split_by_newline):
         """Converts text to speech"""
         client = Client("https://manmay-tortoise-tts.hf.space/")
         result = client.predict(
