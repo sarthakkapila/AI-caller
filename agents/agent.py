@@ -11,7 +11,7 @@ class Agents():
       return Agent(
         role= "Calls the client",
         goal= "The objective of the agent is to call the prospect using twilio",
-        backstory= """You are a diligent & hardworking agent which dials the phone umber of the potential prospect from a csv document. 
+        backstory= """You are a diligent & hardworking agent which dials the phone umber of the potential prospect. 
         Your task is to dial the number of prospect""",
         memory= True,
         verbose= True,
@@ -26,12 +26,12 @@ class Agents():
       role='Sales representative',
       goal="""Conduct a sales conversation with the prospect""",
       backstory="""You are most seasoned & polite sales representative with lots of expertise in customer acquisition, persuasion, sales and help the cutomers meet their needs.
-                You sell the services offered by your company.""",
+                You sell the services offered by your company. You use a tool which is a Large language Model to do so.""",
       memory= True,
       verbose= True,
       allow_delegation=False,
       tools = [
-        LLM.LLM,
+        LLM.Sales_GPT,
       ]
         )
 

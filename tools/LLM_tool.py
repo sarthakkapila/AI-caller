@@ -16,7 +16,7 @@ class LLM:
 
     # @tool("Context-aware AI Agent for Sales")
     @staticmethod
-    def LLM():
+    def Sales_GPT():
         """Context-aware AI Agent for Sales"""
 
         conversation_stages = {
