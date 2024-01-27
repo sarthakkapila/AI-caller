@@ -4,6 +4,9 @@ from twilio.rest import Client
 import csv
 import pandas as pd
 
+from dotenv import load_dotenv
+load_dotenv()  
+
 from langchain.tools import tool
 from crewai import Agent, Task
 
@@ -33,8 +36,8 @@ class CallNumber:
     @staticmethod
     def make_call(max_calls):
         """Calls a phone number"""
-        account_sid = 'ACea6a7def2b53a8ad97298f9ba69fccf8'
-        auth_token = '7d1f0b090ec6cd9460786898798ee6dc'
+        account_sid = TWILIO_ACCOUNT_SID
+        auth_token = TWILIO_AUTH_TOKEN
         
         names, numbers = CallNumber.read_number()
 
