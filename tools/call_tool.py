@@ -4,8 +4,11 @@ from twilio.rest import Client
 import csv
 import pandas as pd
 
+from langchain.tools import tool
+from crewai import Agent, Task
+
 class CallNumber:
-    # @tool("Reads a number from a csv file")
+    @tool("Reads a number from a csv file")
     @staticmethod
     def read_number():
         """Reads names and numbers from a local CSV file"""
@@ -26,7 +29,7 @@ class CallNumber:
         return names, numbers
     
 # Added max_calls to avoid too much api usage
-    # @tool("Dial a phone number")
+    @tool("Call a prospect/client")
     @staticmethod
     def make_call(max_calls):
         """Calls a phone number"""
