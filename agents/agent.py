@@ -27,6 +27,9 @@ class Agents():
         ]    
       )
       
+      
+# Thinking of adding multiple tasks and tool to one agent i.e. conversation
+      
     def sales_agent(self, name):
         return Agent(
       role='Sales representative',

@@ -52,4 +52,3 @@ class CallNumber:
             print(f"Call SID: {call.sid}")
             
             calls_made += 1
-            

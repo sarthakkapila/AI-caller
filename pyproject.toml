@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "ai cold-caller"
+version = "0.1.0"
+description = ""
+authors = ["Sarthak"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.26.0"
+python-dotenv = "1.0.0"
+langchain-community = "0.0.10"
+langchain-core = "0.1.8"
+openai = "1.7.0"
+crewai = "0.1.24"
+twilio = "8.12.0"
+pandas = "2.2.0"
+pyarrow = "^15.0.0"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
