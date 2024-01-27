@@ -1,18 +1,16 @@
 import os
-from twilio.rest import Client as TwilioClient
-from gradio_client import Client as GradioClient
-# from langchain.tools import tool
-# from langchain_community.llms import HuggingFaceHub
+
+from langchain.tools import tool
+from langchain_community.llms import HuggingFaceHub
+
+from langchain.chat_models import ChatLiteLLM, SalesGPT
+
 from dotenv import load_dotenv
-import pyaudio
-import speech_recognition as sr
-
-from langchain.chat_models import ChatLiteLLM, SalesGPT  # Import necessary classes from langchain
-
-load_dotenv()  # make sure you have .env file with your API keys, eg., OPENAI_API_KEY=sk-xxx
+load_dotenv()  
 
 
 class LLM:
+    @tool('Context-aware AI agents for sales')
     @staticmethod
     def Sales_GPT():
         """Context-aware AI Agent for Sales"""
