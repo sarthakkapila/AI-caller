@@ -1,5 +1,9 @@
 import requests
 
+# Finally decided to go with elven labs because it offers like 10k chracters for free i.e. around 10 calls.
+# The high level code is loaded just need to add a way for the llm to communicate with this part of code
+# And this part of code to send audio as well that through twilio.
+
 class TextToSpeech:
     @staticmethod
     def generate_audio():
