@@ -55,6 +55,7 @@ class LLM:
             sales_agent.step()
 
             # User's input
+            # 🚨
             user_input = input()
             
             # User's output
