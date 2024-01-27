@@ -13,7 +13,6 @@ load_dotenv()  # make sure you have .env file with your API keys, eg., OPENAI_AP
 
 
 class LLM:
-    @tool("Context-aware AI Agent for Sales")
     @staticmethod
     def Sales_GPT():
         """Context-aware AI Agent for Sales"""
@@ -25,7 +24,9 @@ class LLM:
             '4': "Needs analysis: Ask open-ended questions to uncover the prospect's needs and pain points. Listen carefully to their responses and take notes.",
             '5': "Solution presentation: Based on the prospect's needs, present your product/service as the solution that can address their pain points.",
             '6': "Objection handling: Address any objections that the prospect may have regarding your product/service. Be prepared to provide evidence or testimonials to support your claims.",
-            '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits."
+            '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits.",
+            '8': "End: Conclude the conversation by expressing gratitude for their time and attention. Reiterate your contact information and let them know you're available for any further inquiries. Thank them for considering your product/service and leave the door open for future communication or follow-up if needed.",
+            '9': "Break: Reaching this stage means that the call is completed and then the call is disconnected" 
         }
 
         config = dict(
@@ -45,59 +46,40 @@ class LLM:
         # Initialize LiteLLM
         llm = ChatLiteLLM(temperature=0.4, model_name="gpt-3.5-turbo")
 
-        # Initialize SalesGPT's Agent
+        # Initialize SalesGPT
         sales_agent = SalesGPT.from_llm(llm, use_tools=True, verbose=False, **config)
 
         # Seed the agent
         sales_agent.seed_agent()
 
-        # Determines conversation stage (optional for demonstration)
-        sales_agent.determine_conversation_stage()
+        while True:
+            # Agent's output
+            sales_agent.step()
 
-        # 🚨
-        # Over here a logic will be added so that the conversation continues.
-        # As if now It is a single turn logic i.e. user_input then agent_input and so on one by one.
-        # I need to figure out a logic in which the conversation continues, and call ending logic too.
+            # User's input
+            user_input = input()
+            
+            # User's output
+            sales_agent.human_step(user_input)
 
-        # Agent's output
-        sales_agent.step()
+            # Determine conversation stage
+            sales_agent.determine_conversation_stage()
+            
+            if sales_agent.determine_conversation_stage() == 9:
+                break
+            else: 
+                continue
 
-        # User's input
-        # Add a new logic to this.
-        user_input = input('Your response: ')
-        # User's output
-        sales_agent.human_step(user_input)
+# 🚨
+# WILL ADD WHEN EVERYTHING ELSE IS WORKING !
+        # # Accessing generated responses
+        # generated_response = sales_agent.get_last_response()
+        # print("Generated Response:", generated_response)
 
-        # Determine conversation stage again (optional)
-        sales_agent.determine_conversation_stage()
+        # # Accessing conversation history
+        # conversation_history = sales_agent.get_conversation_history()
+        # print("Conversation History:", conversation_history)
 
-        # Agent's output
-        sales_agent.step()
-
-        # You can continue the conversation as needed
-
-        # 🚨
-        # The logic will be written according to the conversation stages.
-        # conversation_stages = {
-        # '1' : "Introduction
-        # '2': "Qualification
-        # '3': "Value proposition
-        # '4': "Needs analysis
-        # '5': "Solution presentation
-        # '6': "Objection handling
-        # '7': "Close
-        # }
-
-        # Accessing generated responses
-        generated_response = sales_agent.get_last_response()
-        print("Generated Response:", generated_response)
-
-        # Accessing conversation history
-        conversation_history = sales_agent.get_conversation_history()
-        print("Conversation History:", conversation_history)
-
-        # Accessing other agent information
-        agent_info = sales_agent.get_agent_info()
-        print("Agent Information:", agent_info)
-
-        # You can return or use any relevant information from the agent as needed
+        # # Accessing other agent information
+        # agent_info = sales_agent.get_agent_info()
+        # print("Agent Information:", agent_info)
