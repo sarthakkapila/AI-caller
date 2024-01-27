@@ -13,7 +13,7 @@ load_dotenv()  # make sure you have .env file with your API keys, eg., OPENAI_AP
 
 
 class LLM:
-    # @tool("Context-aware AI Agent for Sales")
+    @tool("Context-aware AI Agent for Sales")
     @staticmethod
     def Sales_GPT():
         """Context-aware AI Agent for Sales"""
