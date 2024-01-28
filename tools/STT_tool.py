@@ -17,7 +17,6 @@ load_dotenv() # make sure you have .env file with your API keys, eg., OPENAI_API
 # Need to figure out how can whisper hear what the client is saying while on the call
 
 class STT:
-
     @staticmethod
     def speech_to_text():
         # Set up the microphone
