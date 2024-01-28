@@ -8,10 +8,9 @@ from langchain.chat_models import ChatLiteLLM, SalesGPT
 from dotenv import load_dotenv
 load_dotenv()  
 
+from tools.TTS_tool import TextToSpeech
 
 class LLM:
-    @tool('Context-aware AI agents for sales')
-    @staticmethod
     def Sales_GPT():
         """Context-aware AI Agent for Sales"""
 
@@ -50,12 +49,17 @@ class LLM:
         # Seed the agent
         sales_agent.seed_agent()
 
+
+    # 🚨 Call elevenlabs audio function in this only & figure out a way to stream that audio through twilio.
         while True:
             # Agent's output
-            sales_agent.step()
-
+            agent_output = sales_agent.step()
+            
+            # Find a way to stream this to twilio
+            TextToSpeech.generate_audio(agent_output)
+            
             # User's input
-            # 🚨
+            # 🚨 Need to connect this to STT function which is further connected to twilio
             user_input = input()
             
             # User's output

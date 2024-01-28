@@ -11,7 +11,6 @@ import speech_recognition as sr
 from dotenv import load_dotenv
 load_dotenv() # make sure you have .env file with your API keys, eg., OPENAI_API_KEY=sk-xxx
 
-
 # 🚨🚨🚨
 # Needs a whole fix
 # Need to figure out how can whisper hear what the client is saying while on the call
