@@ -55,7 +55,8 @@ class CallNumber:
             except Exception as e:
                 print(f"Error calling {name} at {number}: {str(e)}")
                 continue
-            # Need to fix the status according to the twilio api rest is goos :)
+            
+            #🚨 Need to fix the status according to the twilio api rest is goos :)
             while call.status not in ['completed', 'busy']:
                 time.sleep(1) 
             
