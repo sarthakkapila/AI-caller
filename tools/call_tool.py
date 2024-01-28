@@ -1,18 +1,17 @@
 import os
 from twilio.rest import Client
-
+import json
 import csv
 import pandas as pd
+import time
 
 from dotenv import load_dotenv
 load_dotenv()  
 
-from langchain.tools import tool
-from crewai import Agent, Task
 
 class CallNumber:
-    @tool("Reads a number from a csv file")
-    @staticmethod
+    # @tool("Reads a number from a csv file")
+    # @staticmethod
     def read_number():
         """Reads names and numbers from a local CSV file"""
         # Replace the following line with the path to your contacts.csv file
@@ -27,34 +26,44 @@ class CallNumber:
 
         # Extract names and numbers
         names = df[name_column].tolist()
-        numbers = df[number_column].tolist()
+        Phone = df[number_column].tolist()
 
-        return names, numbers
+        return names, Phone
     
-# Added max_calls to avoid too much api usage
-    @tool("Call a prospect/client")
-    @staticmethod
-    def make_call(max_calls):
+    def make_call():
         """Calls a phone number"""
-        account_sid = TWILIO_ACCOUNT_SID
-        auth_token = TWILIO_AUTH_TOKEN
+        account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+        auth_token = os.getenv("TWILIO_AUTH_TOKEN")
         
         names, numbers = CallNumber.read_number()
 
         client = Client(account_sid, auth_token)
         calls_made = 0
+        logs = "logs.json"
 
         for name, number in zip(names, numbers):
-            if calls_made >= max_calls:
-                print(f"Stopped making calls after {max_calls} calls.")
-                break
-            
             print(f"Calling {name} at {number}")
-            call = client.calls.create(
-                to=number,
-                from_='+16692023622',
-                url='http://demo.twilio.com/docs/voice.xml'
-            )
-            print(f"Call SID: {call.sid}")
             
-            calls_made += 1
+            try:
+                call = client.calls.create(
+                    to=number,
+                    from_='+16692023622',
+                    url='http://demo.twilio.com/docs/voice.xml'
+                )
+                print(f"Call SID: {call.sid}")
+                calls_made += 1
+            except Exception as e:
+                print(f"Error calling {name} at {number}: {str(e)}")
+                continue
+            # Need to fix the status according to the twilio api rest is goos :)
+            while call.status not in ['completed', 'busy']:
+                time.sleep(1) 
+            
+            with open(logs, 'a') as json_file:
+                json.dump(call.sid, json_file)
+                json_file.write('\n')
+
+
+        print("All numbers dialed, total calls made:", calls_made)
+
+CallNumber.make_call()
