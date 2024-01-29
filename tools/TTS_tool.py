@@ -5,7 +5,7 @@ from elevenlabs import Voice, VoiceSettings, generate, set_api_key
 from dotenv import load_dotenv
 load_dotenv()
 
-from tools.LLM_tool import LLM
+from tools.LLM_tool import LLM.Sales_GPT
 set_api_key(os.getenv("ELEVENLABS_API_KEY"))
 
 class TextToSpeech:

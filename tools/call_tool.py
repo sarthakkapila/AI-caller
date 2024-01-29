@@ -10,8 +10,6 @@ load_dotenv()
 
 
 class CallNumber:
-    # @tool("Reads a number from a csv file")
-    # @staticmethod
     def read_number():
         """Reads names and numbers from a local CSV file"""
         # Replace the following line with the path to your contacts.csv file

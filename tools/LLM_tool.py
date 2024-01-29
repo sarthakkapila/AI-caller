@@ -25,7 +25,7 @@ class LLM:
             '8': "End: Conclude the conversation by expressing gratitude for their time and attention. Reiterate your contact information and let them know you're available for any further inquiries. Thank them for considering your product/service and leave the door open for future communication or follow-up if needed.",
             '9': "Break: Reaching this stage means that the call is completed and then the call is disconnected" 
         }
-
+        
         config = dict(
             salesperson_name="Ted Lasso",
             salesperson_role="Business Development Representative",
