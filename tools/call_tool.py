@@ -8,7 +8,6 @@ import time
 from dotenv import load_dotenv
 load_dotenv()  
 
-
 class CallNumber:
     def read_number():
         """Reads names and numbers from a local CSV file"""
@@ -54,8 +53,7 @@ class CallNumber:
                 print(f"Error calling {name} at {number}: {str(e)}")
                 continue
             
-            #🚨 Need to fix the status according to the twilio api rest is goos :)
-            while call.status not in ['completed', 'busy']:
+            while call.CallStatus not in ['completed', 'busy', 'canceled', 'no-answer', 'failed']:
                 time.sleep(1) 
             
             with open(logs, 'a') as json_file:
@@ -64,5 +62,3 @@ class CallNumber:
 
 
         print("All numbers dialed, total calls made:", calls_made)
-
-CallNumber.make_call()
