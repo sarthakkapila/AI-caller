@@ -6,3 +6,9 @@ SalesGPT/
 node_modules/
 
 __pycache__/
+
+vosk-model-en-us-0.22-graph/
+
+test.py
+
+requirements.txt

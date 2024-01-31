@@ -1,0 +1,6 @@
+<Response>
+    <Connect>
+    <!-- This will contain the ngrok /strean url for the socket -->
+        <Stream url="" />
+        </Connect>
+</Response>
