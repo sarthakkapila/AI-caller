@@ -5,7 +5,7 @@ from elevenlabs import Voice, VoiceSettings, generate, set_api_key
 from dotenv import load_dotenv
 load_dotenv()
 
-from tools.LLM_tool import LLM.Sales_GPT
+# from tools.LLM_tool import LLM.Sales_GPT
 set_api_key(os.getenv("ELEVENLABS_API_KEY"))
 
 class TextToSpeech:
@@ -29,5 +29,15 @@ class TextToSpeech:
             )
         # Play this audio to twilio call
         play(audio)
-# TESTING
-# TextToSpeech.generate_audio()
+
+    def generate_intro():
+        """Generates the intro audio"""
+        # Replace the following line with the path to your intro.txt file
+        intro_file_path = "intro.txt"
+        
+        # Read the intro text from the file
+        with open(intro_file_path, "r") as file:
+            intro_text = file.read()
+        
+        # Generate the intro audio
+        TextToSpeech.generate_audio(intro_text)

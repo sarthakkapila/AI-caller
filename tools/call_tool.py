@@ -9,10 +9,10 @@ from dotenv import load_dotenv
 load_dotenv()  
 
 class CallNumber:
-    def read_number():
+    def read_number(csv_file_path):
         """Reads names and numbers from a local CSV file"""
         # Replace the following line with the path to your contacts.csv file
-        csv_file_path = "contacts.csv"
+        # csv_file_path = "contacts.csv"
 
         # Read the CSV file into a Pandas DataFrame
         df = pd.read_csv(csv_file_path)
@@ -27,12 +27,12 @@ class CallNumber:
 
         return names, Phone
     
-    def make_call():
+    def make_call(file_path):
         """Calls a phone number"""
         account_sid = os.getenv("TWILIO_ACCOUNT_SID")
         auth_token = os.getenv("TWILIO_AUTH_TOKEN")
         
-        names, numbers = CallNumber.read_number()
+        names, numbers = CallNumber.read_number(file_path)
 
         client = Client(account_sid, auth_token)
         calls_made = 0
@@ -53,12 +53,12 @@ class CallNumber:
                 print(f"Error calling {name} at {number}: {str(e)}")
                 continue
             
-            while call.CallStatus not in ['completed', 'busy', 'canceled', 'no-answer', 'failed']:
-                time.sleep(1) 
-            
             with open(logs, 'a') as json_file:
                 json.dump(call.sid, json_file)
                 json_file.write('\n')
 
 
         print("All numbers dialed, total calls made:", calls_made)
+        
+# USAGE        
+CallNumber.make_call("contacts.csv")
